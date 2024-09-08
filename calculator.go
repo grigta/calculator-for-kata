@@ -57,6 +57,11 @@ func calculate(input string) (string, error) {
 	a, err1 := strconv.Atoi(parts[0])
 	b, err2 := strconv.Atoi(parts[1])
 
+	// Проверка на ввод 0 или некорректных чисел
+	if (err1 == nil && (a == 0 || a < 1 || a > 10)) || (err2 == nil && (b == 0 || b < 1 || b > 10)) {
+		return "", fmt.Errorf("числа должны быть от 1 до 10")
+	}
+
 	if err1 != nil && err2 != nil {
 		isRoman = true
 		a, err1 = romanToInt(parts[0])
